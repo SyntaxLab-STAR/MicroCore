@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>MicroCore</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>MicroCore</h1>
+
+        <p class="subtitle">
+            A simple CPU simulator
+        </p>
+
+
+        <!-- CPU -->
+
+        <div class="card">
+
+            <h2>CPU</h2>
+
+            <div class="cpu">
+
+                <div>
+                    <strong>Register A</strong>
+                    <p id="registerA">0</p>
+                </div>
+
+                <div>
+                    <strong>Register B</strong>
+                    <p id="registerB">0</p>
+                </div>
+
+                <div>
+                    <strong>Program Counter</strong>
+                    <p id="programCounter">0</p>
+                </div>
+
+                <div>
+                    <strong>Instruction</strong>
+                    <p id="instruction">---</p>
+                </div>
+
+            </div>
+
+            <button onclick="runCPU()">
+                Run CPU Cycle
+            </button>
+
+            <button onclick="resetCPU()">
+                Reset CPU
+            </button>
+
+        </div>
+
+
+        <!-- CPU CYCLE -->
+
+        <div class="card">
+
+            <h2>CPU Cycle</h2>
+
+            <div class="cycle">
+
+                <div>
+                    <strong>Stage</strong>
+                    <p id="cycleStage">Waiting</p>
+                </div>
+
+                <div>
+                    <strong>Fetched Instruction</strong>
+                    <p id="fetchedInstruction">---</p>
+                </div>
+
+                <div>
+                    <strong>Decoded Operation</strong>
+                    <p id="decodedOperation">---</p>
+                </div>
+
+                <div>
+                    <strong>Execution</strong>
+                    <p id="executionResult">---</p>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ALU -->
+
+        <div class="card">
+
+            <h2>ALU</h2>
+
+            <div class="alu">
+
+                <div>
+                    <strong>Input A</strong>
+                    <p id="aluA">0</p>
+                </div>
+
+                <div>
+                    <strong>Operation</strong>
+                    <p id="aluOperation">---</p>
+                </div>
+
+                <div>
+                    <strong>Input B</strong>
+                    <p id="aluB">0</p>
+                </div>
+
+                <div>
+                    <strong>Result</strong>
+                    <p id="aluResult">0</p>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- PROGRAM -->
+
+        <div class="card">
+
+            <h2>Program</h2>
+
+            <div id="program"></div>
+
+        </div>
+
+
+        <!-- MEMORY -->
+
+        <div class="card">
+
+            <h2>Memory</h2>
+
+            <div id="memory"></div>
+
+        </div>
+
+
+        <!-- CPU ACTIVITY -->
+
+        <div class="card">
+
+            <h2>CPU Activity</h2>
+
+            <p id="activity">
+                CPU is waiting...
+            </p>
+
+        </div>
+
+
+        <!-- LOG -->
+
+        <div class="card">
+
+            <h2>Instruction Log</h2>
+
+            <div id="log"></div>
+
+        </div>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
