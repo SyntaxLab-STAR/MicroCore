@@ -1,0 +1,34 @@
+# MicroCore
+
+A simple CPU simulator built with HTML, CSS, and JavaScript.
+
+MicroCore is an educational project that shows some of the basic ideas behind how a CPU executes instructions. The goal was to build a small CPU model that is easy to understand and interact with in a web browser.
+
+## Demo
+
+![MicroCore Main View](microcore-main.png)
+
+## What MicroCore Can Do
+
+MicroCore simulates several basic CPU components and instructions:
+
+- Registers
+- Program Counter
+- Memory
+- Arithmetic Logic Unit (ALU)
+- Instruction execution
+- Fetch, Decode, Execute cycle
+- Program editing
+- Instruction logging
+- Basic control flow
+
+Supported instructions include:
+
+```text
+LOAD
+LOADB
+ADD
+SUB
+JUMP
+JUMPZERO
+HALT

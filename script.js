@@ -23,12 +23,6 @@ let program = [
 
     "ADD",
 
-    "SUB",
-
-    "JUMPZERO 6",
-
-    "LOADB 1",
-
     "HALT"
 
 ];
@@ -43,9 +37,6 @@ let memory = [
     5,
     3,
     8,
-    0,
-    0,
-    1,
     0
 
 ];
@@ -292,9 +283,7 @@ function executeInstruction(
         programCounter;
 
 
-    // =========================
     // LOAD
-    // =========================
 
     if(operation == "LOAD"){
 
@@ -323,9 +312,7 @@ function executeInstruction(
     }
 
 
-    // =========================
     // LOADB
-    // =========================
 
     else if(operation == "LOADB"){
 
@@ -354,9 +341,7 @@ function executeInstruction(
     }
 
 
-    // =========================
     // ADD
-    // =========================
 
     else if(operation == "ADD"){
 
@@ -396,9 +381,7 @@ function executeInstruction(
     }
 
 
-    // =========================
     // SUB
-    // =========================
 
     else if(operation == "SUB"){
 
@@ -438,9 +421,7 @@ function executeInstruction(
     }
 
 
-    // =========================
     // JUMP
-    // =========================
 
     else if(operation == "JUMP"){
 
@@ -467,9 +448,7 @@ function executeInstruction(
     }
 
 
-    // =========================
     // JUMPZERO
-    // =========================
 
     else if(operation == "JUMPZERO"){
 
@@ -518,9 +497,7 @@ function executeInstruction(
     }
 
 
-    // =========================
     // HALT
-    // =========================
 
     else if(operation == "HALT"){
 
@@ -539,6 +516,23 @@ function executeInstruction(
         addLog(
             "PC " + oldPC +
             ": HALT"
+        );
+
+    }
+
+
+    // UNKNOWN INSTRUCTION
+
+    else{
+
+        running = false;
+
+        document.getElementById("activity").innerHTML =
+            "Unknown instruction: " + instruction;
+
+        addLog(
+            "PC " + oldPC +
+            ": Unknown instruction"
         );
 
     }
@@ -562,8 +556,6 @@ function runCPU(){
     }
 
 
-    // FETCH
-
     let instruction =
         fetchInstruction();
 
@@ -574,13 +566,9 @@ function runCPU(){
     }
 
 
-    // DECODE
-
     let operation =
         decodeInstruction(instruction);
 
-
-    // EXECUTE
 
     executeInstruction(
         instruction,
@@ -591,6 +579,62 @@ function runCPU(){
     updateCPU();
 
     showProgram();
+
+}
+
+
+// =========================
+// LOAD USER PROGRAM
+// =========================
+
+function loadProgram(){
+
+    let input =
+        document.getElementById("programInput").value;
+
+
+    let lines =
+        input.split("\n");
+
+
+    let newProgram = [];
+
+
+    for(let i = 0; i < lines.length; i++){
+
+        let line =
+            lines[i].trim();
+
+
+        if(line != ""){
+
+            newProgram.push(
+                line.toUpperCase()
+            );
+
+        }
+
+    }
+
+
+    if(newProgram.length == 0){
+
+        document.getElementById("programMessage").innerHTML =
+            "Please enter a program.";
+
+        return;
+
+    }
+
+
+    program = newProgram;
+
+
+    resetCPU();
+
+
+    document.getElementById("programMessage").innerHTML =
+        "Program loaded successfully.";
 
 }
 
@@ -612,6 +656,7 @@ function resetCPU(){
 
     document.getElementById("instruction").innerHTML =
         "---";
+
 
     document.getElementById("activity").innerHTML =
         "CPU is waiting...";
